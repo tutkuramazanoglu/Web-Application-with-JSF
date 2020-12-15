@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+	<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+	</head>
+	<body>
+	<br/><h3 class="text-center font-weight-bold text-success">Account Details</h3><br/><br/>
+	<h:form>
+	
+	<h:dataTable value="#{con.showAllRecords()}" var = "account" class="table table-striped">
+	<h:column>
+	<f:facet name="header">Account ID</f:facet>
+	#{account.account_id}
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">Account Type</f:facet>
+	#{account.type}
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">Account Holder Name</f:facet>
+	#{account.holder_name}
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">Account Holder Contact</f:facet>
+	#{account.holder_contact}
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">Account Balance</f:facet>
+	#{account.balance}
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">Account SetUp date</f:facet>
+	#{account.setup_date}
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">Update</f:facet>
+	<h:commandButton action="#{con.edit(account.account_id)}" value ="Update" class = "btn btn-success"></h:commandButton>
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">Delete</f:facet>
+	<h:commandButton action="#{con.delete(account.account_id)}" value ="Delete" class = "btn btn-success"></h:commandButton>
+	</h:column>
+		
+	</h:dataTable>
+	
+	</h:form>
+	<h:form>
+	<h:commandButton action="#{con.insert()}" value="Add New Account" class = "btn btn-success">
+	</h:commandButton>
+	</h:form>
+</body>
+
+</html>
